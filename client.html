@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>kkkk</title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="img/favicon.ico">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script>
+		
+                var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+                 $(document).ready(function() {
+                        var r_name = getUrlParameter('name'),
+						r_call = getUrlParameter('call'),
+						r_message = getUrlParameter('message'),
+						r_product = getUrlParameter('product'),
+						r_order = getUrlParameter('order'),
+						 r_id = getUrlParameter('id'),
+                            r_response = getUrlParameter('response'),
+							 r_accept = getUrlParameter('accept'),
+							  r_code = getUrlParameter('code'),
+						  my_id = getUrlParameter('myid');
+						 
+						 
+  document.getElementById("roomname").value =  r_name ;
+    document.getElementById("sendid").value =  r_id  ;   
+	  document.getElementById("call").value =  r_call ;
+    document.getElementById("product").value =  r_product  ;   
+	  document.getElementById("message").value =  r_message ;
+    document.getElementById("order").value =  r_order  ;   
+	   document.getElementById("myid").value = my_id  ;
+	    document.getElementById("accept").value =  r_accept ;
+		document.getElementById("code").value =  r_code ;
+                     document.getElementById("response").value = r_response  ;
+                 });
+	
+
+                </script>       
+    </head>
+
+
+    <body>
+	<input type="hidden" value="" id="roomname" >
+<input type="hidden" value="" id="roomid" data-id="">
+<input type="hidden" value="" id="call" >
+<input type="hidden" value="" id="order" >
+<input type="hidden" value="" id="product" >
+<input type="hidden" value="" id="message" >
+<input type="hidden" value="" id="myid" >
+<input type="hidden" value="" id="sendid" >
+<input type="hidden" value="" id="accept" >
+<input type="hidden" value="" id="code" >
+    <input type="hidden" value="" id="response" >
+        <div  id="nd-widget-container" class="nd-widget-container" data-names="a"></div>
+        <script id="newdev-embed-script" data-message="Start Video Chat" data-source_path="/livesmart/" src="/livesmart/js/widget.js" data-button-css="button_gray.css" data-avatar="./img/avatar.jpg" data-names="a" async></script>
+        
+    </body>
+</html>

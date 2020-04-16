@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>LiveSmart Agent Board</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" media="all" type="text/css" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
+        <link rel="stylesheet" href="css/agent.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+        <script src="js/detect.js"></script>
+        <script src="js/datetimepicker.js"></script>
+    </head>
+
+
+    <body>
+
+  
+        <button type="button" id="call">  
+            call 
+        </button> 
+    
+  
+  
+        <button type="button" id="message">  
+            message 
+        </button> 
+		<button type="button" id="order">  
+            order
+        </button> 
+		<button type="button" id="response">
+          response
+        </button> 
+		<button type="button" id="accept">
+          accept
+        </button> 
+	<input type="hidden" value="" id="roomname" >
+<input type="hidden" value="" id="roomid" data-id="">
+<input type="hidden" value="" id="call" >
+<input type="hidden" value="" id="order" >
+<input type="hidden" value="" id="product" >
+<input type="hidden" value="" id="message" >
+<input type="hidden" value="" id="myid" >
+<input type="hidden" value="" id="sendid" >   
+ <input type="hidden" value="" id="response" >
+<input type="hidden" value="" id="accept" >
+<input type="hidden" value="" id="code" data-code="">
+     
+
+        <script>
+	
+
+            var isAdmin = true;
+            var roomId = false;
+            var agentUrl, visitorUrl, sessionId;
+
+			   $(document).ready(function() {
+  	// Get parameter
+
+                var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+                 $(document).ready(function() {
+                        var c_name = getUrlParameter('name'),
+						  c_id = getUrlParameter('id'),
+						  t1 = 'call' + c_id ,
+							t2 = 'message' + c_id ,
+							t3 = 'order' + c_id ,
+							t4 = 'response' + c_id ,
+							t5 = 'roomid' + c_id ,
+							t6 = 'accept' + c_id ,
+							t7 = 'code' + c_id ;
+
+
+  $("#call").attr("id", t1);
+    $('#'+ t1).click(function() {   // call
+setTimeout(function(){
+	var send_id = $('#' +t5).attr('data-id');
+
+              parent.run1();
+
+			 parent.call_counter(1);
+			}, 500);
+            });
+
+
+  $("#roomid").attr("id", t5);
+   $("#code").attr("id", t7);
+$("#message").attr("id", t2);
+   $('#'+ t2).click(function() {   // message
+ setTimeout(function(){
+	var send_id = $('#' +t5).attr('data-id');
+
+              parent.run1();
+
+			 parent.message_counter(1);
+			}, 500);
+            });
+
+
+$("#order").attr("id", t3);
+
+        $('#'+ t3).click(function() {   // message
+ setTimeout(function(){
+	var send_id = $('#' +t5).attr('data-id');
+
+              parent.run1();
+
+			 parent.cart_counter(1);
+			}, 500);
+            });
+   
+   
+ $("#response").attr("id", t4);
+
+          $('#'+ t4).click(function() {   // message
+ setTimeout(function(){
+                         parent.wcfm_call_sound.pause();
+                         parent.$('.wcfm_notification_wrapper').slideDown(function() {
+                             parent.$('.wcfm_notification_wrapper').remove()
+                        }, 500);
+						})
+
+                     });
+$("#accept").attr("id", t6);
+
+          $('#'+ t6).click(function() {   // message
+		   setTimeout(function(){
+var code = $('#' +t7).attr('data-id');
+                       	var page = location.origin ;
+
+		var $dialog = $('<div></div>')
+               .html('<iframe style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
+               .dialog({
+                   autoOpen: false,
+                   modal: true,
+                   height: 625,
+                   width: 500,
+                   title: "Some title"
+               });
+			$dialog.dialog('open');
+                  
+				  alert(code);
+                        }, 500);
+						})
+					
+                   
+            });
+
+
+ });
+
+
+
+
+  $(parent.document).on("click", ".accept", function () {
+
+    function get_id_value() {
+
+	 return $('#roomid1').val();
+	 }
+	get_id_value();
+	var send_id = get_id_value()
+      parent.call_counter(send_id, -1);      })
+
+
+        </script>
+        <script src="/livesmart/js/loader.js" data-source_path="/livesmart/" ></script>
+    </body>
+</html>

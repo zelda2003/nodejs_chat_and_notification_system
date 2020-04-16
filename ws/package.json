@@ -1,0 +1,28 @@
+{
+  "name": "newdev-smartvideo",
+  "version": "0.0.15",
+  "description": "Node.js push server with web sockets",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "fs": "latest",
+    "https": "^1.0.0",
+    "mongodb": "^3.3.4",
+    "socket.io": "^2.3.0",
+    "ws": "^6.1.2"
+  },
+  "engines": {
+    "node": "4.0.0"
+  },
+  "keywords": [
+    "node",
+    "websocket",
+    "webrtc",
+    "ws"
+  ],
+  "author": "Nikolay Hadjididimitrov",
+  "license": "MIT"
+}
